@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.video-details {
+    margin-top: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    .song-details {
+        padding-block-end: 1rem;
+        text-align: left;
+
+        h3 {
+            padding-block: 0.5em;
+            font-size: 1.6rem;
+        }
+    }
+}

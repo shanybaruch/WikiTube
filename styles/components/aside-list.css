@@ -1,0 +1,26 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.list-videos {
+    gap: 1em;
+    
+    .fav-list {
+        place-items: center;
+        
+        font-size: 0.8rem;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0.4em;
+        
+        .title-video {
+            font-family: serif;
+        }
+
+        img {
+            max-width: 11vw;
+            max-height: 12vh;
+        }
+    }
+}

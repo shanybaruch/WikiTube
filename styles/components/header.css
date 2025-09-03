@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.header {
+    padding: 2em;
+    align-items: center;
+
+    .title-logo {
+        letter-spacing: 2px;
+        font-family: Arial, Helvetica, sans-serif;
+
+        justify-self: left;
+    }
+
+    .search-bar {
+        gap: 1em;
+
+        .search-input {
+            padding: 1em;
+        }
+
+        .search-btn {
+            padding: 0.5em;
+        }
+    }
+}
