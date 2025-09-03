@@ -3,14 +3,16 @@
 
 function onInit() {
     gFavorites = loadFromStorage(FAVORITES) || []
-    console.log(gFavorites)
+    // console.log(gFavorites.length === 0)
+    if (gFavorites.length > 0) renderList()
     if (gFavorites.length === 0) getFav('dog')
         .then(renderList)
 
     gDetails = loadFromStorage(DETAILS) || []
-    if (!gDetails) getDetails()
+    if (gDetails.length === 0) getDetails()
+        .then(renderDetails)
+    // console.log(gDetails);
     renderDetails()
-
 }
 
 function renderList() {
@@ -23,6 +25,7 @@ function renderList() {
             <img src=${gFavorites[i].img.url}></img> 
             <h3 class='title-video'>${gFavorites[i].title}</h3>   
         </div>`        
+        
     }
     elFavs.innerHTML = strHtml
 }
@@ -30,15 +33,14 @@ function renderList() {
 function renderDetails() {
     const elSongDetails = document.querySelector('.video-details')
     var strHtml = ''
+    // console.log(gDetails)
 
     for (var i = 0; i < 2; i++) {
         strHtml += `
         <div class='song-details'>
-            <h3 class='title'>${gDetails.title}</h3> 
-            <div class='description'>${gDetails.description}</div>  
+            <h3 class='title'>${gDetails[i].title}</h3> 
+            <div class='description'>${gDetails[i].description}</div>  
         </div>`
-        console.log(gDetails)
-    }
-    
+    } 
     elSongDetails.innerHTML = strHtml
 }
