@@ -21,7 +21,7 @@ function renderList() {
 
     for (var i = 0; i < 5; i++) {        
         strHtml += `
-        <div class='fav-list grid'>
+        <div class='fav-video grid'>
             <img src=${gFavorites[i].img.url}></img> 
             <h3 class='title-video'>${gFavorites[i].title}</h3>   
         </div>`        

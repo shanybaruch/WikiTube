@@ -32,7 +32,7 @@
     grid-column: 2 / 3;
     grid-row: 1 / 3;
 
-    .fav-list {
+    .fav-video {
         grid-column: 1 / 2;
         grid-template-columns: 1fr 3fr;
 

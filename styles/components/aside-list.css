@@ -7,8 +7,9 @@
 .list-videos {
     gap: 1.5em;
     
-    .fav-list {
+    .fav-video {
         place-items: center;
+        cursor: pointer;
         
         font-size: 0.8rem;
         font-family: Arial, Helvetica, sans-serif;
