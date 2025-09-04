@@ -13,19 +13,31 @@ function onInit() {
         .then(renderDetails)
     // console.log(gDetails);
     renderDetails()
+
+    var input = document.querySelector('.search-input')
+    var val
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            console.log("Searching: ", event.target.value)
+            val = event.target.value
+        }
+        getFav(val)
+            .then(renderList)
+
+    })
 }
 
 function renderList() {
     const elFavs = document.querySelector('.list-videos')
     var strHtml = ''
 
-    for (var i = 0; i < 5; i++) {        
+    for (var i = 0; i < 5; i++) {
         strHtml += `
         <div class='fav-video grid'>
             <img src=${gFavorites[i].img.url}></img> 
             <h3 class='title-video'>${gFavorites[i].title}</h3>   
-        </div>`        
-        
+        </div>`
+
     }
     elFavs.innerHTML = strHtml
 }
@@ -41,6 +53,15 @@ function renderDetails() {
             <h3 class='title'>${gDetails[i].title}</h3> 
             <div class='description'>${gDetails[i].description}</div>  
         </div>`
-    } 
+    }
     elSongDetails.innerHTML = strHtml
+}
+
+function inputValue() {
+    var elInput = document.querySelector('.search-input').value
+    console.log("Searching: ", elInput)
+
+    getFav(elInput)
+        .then(renderList)
+
 }

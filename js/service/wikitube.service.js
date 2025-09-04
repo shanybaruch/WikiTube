@@ -1,14 +1,15 @@
 'use strict'
 
-const FAVORITES = 'favorites'
+const FAVORITES = 'favoritesDB'
 var gFavorites 
-const DETAILS = 'details'
+const DETAILS = 'detailsDB'
 var gDetails
 
 const YT_KEY = `AIzaSyB1aNjvRywhtd84fJ4gcwq7rGlcRA_r_HQ`
 
 function getFav(value) {
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_KEY}&q=${value}`
+    gFavorites = []
     
     return fetch(url)
     .then(res => res.json())
