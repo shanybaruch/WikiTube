@@ -31,7 +31,7 @@ function renderList() {
 
     for (var i = 0; i < 5; i++) {
         strHtml += `
-        <div class='fav-video grid' onclick="onVideoClicked(this)">
+        <div class='fav-video grid' onclick="onVideoClicked('${gFavorites[i].id}')">
         <img src=${gFavorites[i].img.url}></img> 
         <h3 class='title-video'>${gFavorites[i].title}</h3>   
         </div>`
@@ -66,12 +66,10 @@ function inputValue() {
 
 }
 
-function onVideoClicked(videoId) {
-    console.log(videoId)
+function onVideoClicked(video) {
     var elIframe = document.querySelector('.iframe-video')
-    console.log(elIframe)
 
     if (elIframe) {
-        elIframe.src = `https://www.youtube.com/embed/${videoId}`
+        elIframe.src = `https://www.youtube.com/embed/${video}`
     }
 }
