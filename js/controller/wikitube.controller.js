@@ -17,8 +17,12 @@ function onInit() {
     elIframe.src = gVideoMain
 
 
-    //send search with enter
-    var input = document.querySelector('.search-input')
+    //when enter clicked
+    onEnterClicked()
+}
+
+function onEnterClicked() {
+  var input = document.querySelector('.search-input')
     var val
     input.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
@@ -57,7 +61,7 @@ function renderDetails() {
     var strHtml = ''
     console.log(gDetails)
 
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 5; i++) {
         strHtml += `
         <div class='video-details'>
             <h3 class='title'>${gDetails[i].title}</h3> 
