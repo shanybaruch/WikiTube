@@ -4,11 +4,15 @@ const FAVORITES = 'favoritesDB'
 var gFavorites
 const DETAILS = 'detailsDB'
 var gDetails
+const MAIN_VIDEO = 'videoDB'
+var gVideoMain
+const SEARCH = 'searchDB'
+var gSearch
 
 const YT_KEY = `AIzaSyCQmekB7uwfN8Zep8neDzOj-cl2lPbZvmY`
 
 function getFav(value) {
-    console.log(gFavorites);
+    console.log(gFavorites)
     
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_KEY}&q=${value}`
     gFavorites = []
@@ -33,6 +37,11 @@ function getFav(value) {
 }
 
 function getDetails(value) {
+    value = localStorage(SEARCH)
+    if (!value) value = 'dog'
+    console.log(value)
+    
+
     const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${value}&format=json`
     gDetails = []
 
@@ -50,4 +59,5 @@ function getDetails(value) {
                 return gDetails
             })
         })
+        
 }

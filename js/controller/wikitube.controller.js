@@ -12,6 +12,11 @@ function onInit() {
     if (gDetails.length === 0) getDetails('dog')
         .then(renderDetails)
 
+    gVideoMain = loadFromStorage(MAIN_VIDEO) || 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1'
+    var elIframe = document.querySelector('.iframe-video')
+    elIframe.src = gVideoMain
+
+
     //send search with enter
     var input = document.querySelector('.search-input')
     var val
@@ -19,9 +24,17 @@ function onInit() {
         if (event.key === "Enter") {
             console.log("Searching: ", event.target.value)
             val = event.target.value
+
+            getFav(val)
+                .then(renderList)
+
+            getDetails(val)
+                .then(renderDetails)
+           
+            gSearch = val
+            console.log(gSearch);
+            saveToStorage(SEARCH, gSearch)
         }
-        getFav(val)
-            .then(renderList)
     })
 }
 
@@ -42,7 +55,7 @@ function renderList() {
 function renderDetails() {
     const elVideo = document.querySelector('.videos-details')
     var strHtml = ''
-    // console.log(gDetails)
+    console.log(gDetails)
 
     for (var i = 0; i < 2; i++) {
         strHtml += `
@@ -57,19 +70,27 @@ function renderDetails() {
 function inputValue() {
     var elInput = document.querySelector('.search-input').value
     console.log("Searching: ", elInput)
+   
+    gSearch = elInput
+    console.log(gSearch)
+    saveToStorage(SEARCH, gSearch)
+    
+    getDetails(elInput)
+        .then(renderDetails)
 
     getFav(elInput)
         .then(renderList)
-
-    // getDetails(elInput)
-    //     .then(renderDetails)
-
 }
 
 function onVideoClicked(video) {
     var elIframe = document.querySelector('.iframe-video')
+    var url = `https://www.youtube.com/embed/${video}?autoplay=1&mute=1`
 
     if (elIframe) {
-        elIframe.src = `https://www.youtube.com/embed/${video}?autoplay=1&mute=1`
+        elIframe.src = url
+        gVideoMain = url
+        console.log(gVideoMain);
+
+        saveToStorage(MAIN_VIDEO, gVideoMain)
     }
 }
