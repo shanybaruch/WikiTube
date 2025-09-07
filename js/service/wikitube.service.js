@@ -1,11 +1,11 @@
 'use strict'
 
 const FAVORITES = 'favoritesDB'
-var gFavorites
+var gFavorites = loadFromStorage(FAVORITES) || []
 const DETAILS = 'detailsDB'
-var gDetails
-const MAIN_VIDEO = 'videoDB'
-var gVideoMain
+var gDetails = loadFromStorage(DETAILS) || []
+const VIDEO_PLAY = 'videoDB'
+var gPlayVideo = loadFromStorage(VIDEO_PLAY) || 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1'
 const SEARCH = 'searchDB'
 var gSearch
 

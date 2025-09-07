@@ -2,27 +2,28 @@
 
 
 function onInit() {
-    gFavorites = loadFromStorage(FAVORITES) || []
-    if (gFavorites.length > 0) renderList()
-    if (gFavorites.length === 0) getFav('dog')
-        .then(renderList)
-
-    gDetails = loadFromStorage(DETAILS) || []
-    if (gDetails.length > 0) renderDetails()
-    if (gDetails.length === 0) getDetails('dog')
-        .then(renderDetails)
-
-    gVideoMain = loadFromStorage(MAIN_VIDEO) || 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1'
-    var elIframe = document.querySelector('.iframe-video')
-    elIframe.src = gVideoMain
-
+    setFavorite()
+    setVideoDetails()
+    playVideo()
 
     //when enter clicked
     onEnterClicked()
 }
 
+function setVideoDetails() {
+    if (gDetails.length > 0) renderDetails()
+    if (gDetails.length === 0) getDetails('dog')
+        .then(renderDetails)
+}
+
+function setFavorite() {
+    if (gFavorites.length > 0) renderList()
+    if (gFavorites.length === 0) getFav('dog')
+        .then(renderList)
+}
+
 function onEnterClicked() {
-  var input = document.querySelector('.search-input')
+    var input = document.querySelector('.search-input')
     var val
     input.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
@@ -34,12 +35,19 @@ function onEnterClicked() {
 
             getDetails(val)
                 .then(renderDetails)
-           
+
             gSearch = val
             console.log(gSearch);
             saveToStorage(SEARCH, gSearch)
         }
     })
+}
+
+function playVideo() {
+    var videoId = gFavorites[0].id
+    var elVideo = document.querySelector('.iframe-video')
+    var url = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`
+    elVideo.src = url
 }
 
 function renderList() {
@@ -74,11 +82,11 @@ function renderDetails() {
 function inputValue() {
     var elInput = document.querySelector('.search-input').value
     console.log("Searching: ", elInput)
-   
+
     gSearch = elInput
     console.log(gSearch)
     saveToStorage(SEARCH, gSearch)
-    
+
     getDetails(elInput)
         .then(renderDetails)
 
@@ -87,14 +95,11 @@ function inputValue() {
 }
 
 function onVideoClicked(video) {
-    var elIframe = document.querySelector('.iframe-video')
+    var elVideo = document.querySelector('.iframe-video')
     var url = `https://www.youtube.com/embed/${video}?autoplay=1&mute=1`
 
-    if (elIframe) {
-        elIframe.src = url
-        gVideoMain = url
-        console.log(gVideoMain);
-
-        saveToStorage(MAIN_VIDEO, gVideoMain)
+    if (elVideo) {
+        elVideo.src = url
+        saveToStorage(VIDEO_PLAY, url)
     }
 }
