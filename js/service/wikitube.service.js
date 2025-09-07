@@ -5,7 +5,7 @@ var gFavorites
 const DETAILS = 'detailsDB'
 var gDetails
 
-const YT_KEY = `AIzaSyB1aNjvRywhtd84fJ4gcwq7rGlcRA_r_HQ`
+const YT_KEY = `AIzaSyCQmekB7uwfN8Zep8neDzOj-cl2lPbZvmY`
 
 function getFav(value) {
     console.log(gFavorites);

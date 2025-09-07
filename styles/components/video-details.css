@@ -4,11 +4,11 @@
     box-sizing: border-box;
 }
 
-.video-details {
+.videos-details {
     margin-top: 2em;
     font-family: Arial, Helvetica, sans-serif;
     
-    .song-details {
+    .video-details {
         padding-block-end: 1rem;
         text-align: left;
 

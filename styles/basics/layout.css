@@ -20,7 +20,7 @@
 .main-page {
     grid-template-columns: 100px 1fr 1fr 100px;
 
-    iframe {
+    .iframe-video {
         justify-self: start;
         grid-column: 3 /4;
     }
@@ -50,7 +50,7 @@
     }
 }
 
-.video-details {
+.videos-details {
     grid-template-rows: 1fr 1fr;
     grid-column: 3 / 4;
 
