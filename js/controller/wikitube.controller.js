@@ -3,17 +3,18 @@
 
 function onInit() {
     gFavorites = loadFromStorage(FAVORITES) || []
-    // console.log(gFavorites.length === 0)
     if (gFavorites.length > 0) renderList()
+        console.log(gFavorites.length === 0);
+        
     if (gFavorites.length === 0) getFav('dog')
         .then(renderList)
 
     gDetails = loadFromStorage(DETAILS) || []
-    if (gDetails.length === 0) getDetails()
-        .then(renderDetails)
-    // console.log(gDetails);
-    renderDetails()
+    if (gDetails.length > 0) renderDetails()
+    if (gDetails.length === 0) getDetails('dog')
+        .then(renderDetails)    
 
+    //send search with enter
     var input = document.querySelector('.search-input')
     var val
     input.addEventListener("keydown", (event) => {
@@ -23,7 +24,6 @@ function onInit() {
         }
         getFav(val)
             .then(renderList)
-
     })
 }
 
@@ -63,5 +63,8 @@ function inputValue() {
 
     getFav(elInput)
         .then(renderList)
+
+    // getDetails(elInput)
+    //     .then(renderDetails)
 
 }
