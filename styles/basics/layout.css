@@ -5,7 +5,7 @@
 }
 
 .header {
-    grid-template-columns: 100px 1fr 1fr 100px;
+    grid-template-columns: 130px 2fr 3fr 130px;
 
     .title-logo {
         grid-column: 2 / 3;
@@ -18,7 +18,7 @@
 }
 
 .main-page {
-    grid-template-columns: 100px 1fr 1fr 100px;
+    grid-template-columns: 130px 2fr 3fr 130px;
 
     .iframe-video {
         justify-self: start;

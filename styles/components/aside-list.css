@@ -5,22 +5,23 @@
 }
 
 .list-videos {
-    gap: 1.5em;
+    /* gap: 1.5em; */
     
     .fav-video {
         place-items: center;
         cursor: pointer;
+        gap: 1em;
         
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-family: Arial, Helvetica, sans-serif;
-        padding: 0.4em;
+        padding: 1em;
         
         .title-video {
             font-family: serif;
         }
 
         img {
-            max-width: 11vw;
+            max-width: 12vw;
             max-height: 12vh;
         }
     }

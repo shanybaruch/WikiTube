@@ -70,6 +70,6 @@ function onVideoClicked(video) {
     var elIframe = document.querySelector('.iframe-video')
 
     if (elIframe) {
-        elIframe.src = `https://www.youtube.com/embed/${video}`
+        elIframe.src = `https://www.youtube.com/embed/${video}?autoplay=1&mute=1`
     }
 }
